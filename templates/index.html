@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>Search Page</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Find out the person belongs to which category</h1>
+
+    <div class="form">
+        <form action="/predict" method="POST">
+<!--            <input type="text" inputmode="decimal" id="float-input" name="float-input" pattern="[0-9][.,]?[0-9]">-->
+            <input type="number" name="Age" id="Age" placeholder="Age" step="any">
+            <input type="number" name="Height" id="Height" placeholder="Height (Cm)" step="any">
+            <input type="number" name="Weight" id="Weight" placeholder="Weight (Kg)" step="any">
+            <input type="number" name="Sit_Reach" id="Sit_Reach" placeholder="Sit & Reach (Cm)" step="any">
+            <input type="number" name="fifty_m_Dash" id="fifty_m_Dash" placeholder="50 m Dash (Sec.)" step="any">
+            <input type="number" name="PushUps" id="PushUps"placeholder="PushUps (Counts)" step="any">
+            <input type="number" name="one_min_SitUps" id="one_min_SitUps"placeholder="1 min SitUps (Counts)" step="any">
+            <input type="number" name="Run_Walk" id="Run_Walk"placeholder="600 m Run/Walk (Min.Sec)" step="any">
+
+
+</select>
+            <input type="submit" value="Predict">
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+
