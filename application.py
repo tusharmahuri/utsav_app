@@ -1,5 +1,5 @@
 # importing the necessary dependencies
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from flask_cors import cross_origin
 import pickle
 
@@ -51,16 +51,16 @@ def predict():
     try:
         # Parse JSON data from the request body
         data = request.get_json()
-        print('The data: ', data)
+       
         # Extract data from the JSON
-        Age = float(data.get('Age'))
-        Height = float(data.get('Height'))
-        Weight = float(data.get('Weight'))
-        Sit_Reach = float(data.get('Sit_Reach'))
-        fifty_m_Dash = float(data.get('fifty_m_Dash'))
-        PushUps = float(data.get('PushUps'))
-        one_min_SitUps = float(data.get('one_min_SitUps'))
-        Run_Walk = float(data.get('Run_Walk'))
+        Age = float(data.get('age'))
+        Height = float(data.get('height'))
+        Weight = float(data.get('weight'))
+        Sit_Reach = float(data.get('sit_reach'))
+        fifty_m_Dash = float(data.get('fifty_m_dash'))
+        PushUps = float(data.get('pushups'))
+        one_min_SitUps = float(data.get('one_min_situps'))
+        Run_Walk = float(data.get('run_walk'))
 
         filename = 'utsav_rf.pickle'
         loaded_model = pickle.load(open(filename, 'rb'))  # loading the model file from the storage
@@ -70,7 +70,7 @@ def predict():
         print('prediction is', prediction)
 
         result = {
-            "prediction": prediction
+            "prediction": prediction.tolist()
         }
 
         return jsonify(result)
