@@ -5,6 +5,8 @@ import pickle
 
 application = Flask(__name__)  # initializing a flask app
 
+cross_origin(app)  # Enable CORS for your Flask app
+
 
 # app=application
 @application.route('/', methods=['GET'])  # route to display the home page
