@@ -51,7 +51,7 @@ def predict():
     try:
         # Parse JSON data from the request body
         data = request.get_json()
-         print('The data: ', data)
+        print('The data: ', data)
         # Extract data from the JSON
         Age = float(data.get('Age'))
         Height = float(data.get('Height'))
@@ -63,14 +63,14 @@ def predict():
         Run_Walk = float(data.get('Run_Walk'))
 
         filename = 'utsav_rf.pickle'
-        loaded_model = pickle.load(open(filename, 'rb'))
-
-        # Make predictions using the loaded model
+        loaded_model = pickle.load(open(filename, 'rb'))  # loading the model file from the storage
+        # predictions using the loaded model file
         prediction = loaded_model.predict(
             [[Age, Height, Weight, Sit_Reach, fifty_m_Dash, PushUps, one_min_SitUps, Run_Walk]])
+        print('prediction is', prediction)
 
         result = {
-            "prediction": prediction.tolist()
+            "prediction": prediction
         }
 
         return jsonify(result)
