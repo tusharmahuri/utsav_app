@@ -5,7 +5,7 @@ import pickle
 
 application = Flask(__name__)  # initializing a flask app
 
-cross_origin(app)  # Enable CORS for your Flask app
+cross_origin(application)  # Enable CORS for your Flask app
 
 
 # app=application
