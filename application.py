@@ -51,7 +51,7 @@ def predict():
     try:
         # Parse JSON data from the request body
         data = request.get_json()
-
+         print('The data: ', data)
         # Extract data from the JSON
         Age = float(data.get('Age'))
         Height = float(data.get('Height'))
